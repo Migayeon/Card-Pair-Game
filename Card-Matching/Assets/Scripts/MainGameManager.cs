@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameManager : MonoBehaviour
@@ -43,8 +44,8 @@ public class MainGameManager : MonoBehaviour
         {
             if (cardList[currentCard] == cardList[idx])
             {
-                card.GetComponent<Button>().onClick.RemoveAllListeners();
-                cards.GetChild(idx).GetComponent<Button>().onClick.RemoveAllListeners();
+                card.GetComponent<Button>().interactable = false;
+                cards.GetChild(currentCard).GetComponent<Button>().interactable = false;
                 currentPair++;
                 if(currentPair == pairNumber)
                 {
@@ -78,7 +79,10 @@ public class MainGameManager : MonoBehaviour
 
     private void GameEnd()
     {
-
+        //typeList.Insert
+        RankingSystem.playerName = "CHY";
+        RankingSystem.record = time;
+        SceneManager.LoadScene("Ranking");
     }
 
     private void GameStart()
