@@ -25,6 +25,11 @@ public class RankingSystem : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void ResetRanking()
+    {
+
+    }
+
     private void Awake()
     {
         string path = Path.Combine(Application.persistentDataPath, "Ranking.json");

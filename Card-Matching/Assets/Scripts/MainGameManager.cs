@@ -11,6 +11,8 @@ public class MainGameManager : MonoBehaviour
     private List<int> cardList;
     public Transform cards;
     public Text alertText;
+    public GameObject resultCanvas;
+    public Text nameInput;
 
     private bool isTimeCheck = false;
     private float time = 0.0f;
@@ -50,7 +52,7 @@ public class MainGameManager : MonoBehaviour
                 if(currentPair == pairNumber)
                 {
                     isTimeCheck = false;
-                    GameEnd();
+                    resultCanvas.SetActive(true);
                 }
                 currentCard = -1;
             }
@@ -77,10 +79,10 @@ public class MainGameManager : MonoBehaviour
         ControlAllCard(true);
     }
 
-    private void GameEnd()
+    public void SetName()
     {
         //typeList.Insert
-        RankingSystem.playerName = "CHY";
+        RankingSystem.playerName = nameInput.text;
         RankingSystem.record = time;
         SceneManager.LoadScene("Ranking");
     }
