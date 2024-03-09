@@ -111,7 +111,10 @@ public class MainGameManager : MonoBehaviour
         }
     }
 
-
+    public void GiveUpGame()
+    {
+        SceneManager.LoadScene("Title");
+    }
 
     private void Awake()
     {
