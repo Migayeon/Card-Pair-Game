@@ -1,2 +1,5 @@
 # Card-Pair-Game
-카드 짝맞추기 게임
+
+제작 : Unity
+버전 : 2022.3.16f1
+Documentation : null
