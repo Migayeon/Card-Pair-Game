@@ -10,6 +10,8 @@ public class RankingSystem : MonoBehaviour
 {
     public static float record = -1f;
     public static string playerName;
+    private int pivotPage = 0;
+    private int maxPage = 0;
 
     public Transform rankingBlocks;
 
@@ -30,9 +32,31 @@ public class RankingSystem : MonoBehaviour
 
     }
 
+
+
+    private void UpdateRankPage(int pivot, Ranking ranking)
+    {
+        int limit = ranking.records.Count;
+        for (int i = 0; i < Mathf.Min(limit - (pivot*10), 10); i++)
+        {
+            int j = i;
+            rankingBlocks.GetChild(j).GetChild(0).GetComponent<Text>().text = (j + (pivot * 10) + 1).ToString();
+            rankingBlocks.GetChild(j).GetChild(1).GetComponent<Text>().text = ranking.names[j + (pivot * 10)];
+            rankingBlocks.GetChild(j).GetChild(2).GetComponent<Text>().text = ranking.records[j + (pivot * 10)].ToString("0.00");
+        }
+        for (int i = Mathf.Min(limit - (pivot * 10), 10); i < 10; i++)
+        {
+            int j = i;
+            rankingBlocks.GetChild(j).GetChild(0).GetComponent<Text>().text = "";
+            rankingBlocks.GetChild(j).GetChild(1).GetComponent<Text>().text = "";
+            rankingBlocks.GetChild(j).GetChild(2).GetComponent<Text>().text = "";
+        }
+    }
+
     private void Awake()
     {
         string path = Path.Combine(Application.persistentDataPath, "Ranking.json");
+        Debug.Log(path);
         Ranking ranking = new Ranking();
         if(!File.Exists(path))
         {
@@ -45,6 +69,7 @@ public class RankingSystem : MonoBehaviour
         ranking = JsonUtility.FromJson<Ranking>(json);
 
         int limit = ranking.records.Count;
+        maxPage = limit / 10;
         int currentPlayerIndex = 0;
         if (record >= 0f)
         {
@@ -61,7 +86,7 @@ public class RankingSystem : MonoBehaviour
             ranking.names.Insert(currentPlayerIndex, playerName);
             limit++;
         }
-
+        /*
         for (int i = 0; i < Mathf.Min(limit, 10); i++)
         {
             int j = i;
@@ -76,6 +101,9 @@ public class RankingSystem : MonoBehaviour
             rankingBlocks.GetChild(j).GetChild(1).GetComponent<Text>().text = "";
             rankingBlocks.GetChild(j).GetChild(2).GetComponent<Text>().text = "";
         }
+        */
+
+        UpdateRankPage(1,ranking);
        
         if (record >= 0f)
         {
