@@ -572,7 +572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &194104136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -993,7 +993,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278672141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1723113820}
+        m_TargetAssemblyTypeName: RankingSystem, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &278672141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3047,7 +3059,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1385086107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1723113820}
+        m_TargetAssemblyTypeName: RankingSystem, Assembly-CSharp
+        m_MethodName: PrevPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1385086107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3918,6 +3942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rankingBlocks: {fileID: 176603979}
+  controller: {fileID: 194104135}
+  pageText: {fileID: 268567370}
 --- !u!4 &1723113821
 Transform:
   m_ObjectHideFlags: 0
